@@ -79,7 +79,7 @@ export default function SignUp() {
     }
 
     //실질적인 axios요청,
-    return await axios.post(server.url + "/user/signUp", signUpData);
+    //  return await axios.post(server.url + "/user/signUp", signUpData);
   };
 
   return (
