@@ -1,13 +1,11 @@
 import Link from "next/link";
 import Logo from "../public/logo.svg";
-import Header from "../components/Header";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <section>
-        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col bg-[#0074FF] h-screen">
+        <div className="mx-auto flex px-5 py-24 items-center justify-center flex-col bg-[#0074FF] h-screen">
           <div className="mb-10">
             <Logo />
           </div>

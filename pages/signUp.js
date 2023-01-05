@@ -35,6 +35,7 @@ export default function SignUp() {
   // 회원가입 버튼을 클릭 했을때, 유효성 검사 후,
   // axios를 사용해서 서버에 요청!
   let clickSignUpBtn = async () => {
+
     if (signUpData.email === "") {
       alert("이메일을 입력해주세요.");
       return;
@@ -70,23 +71,24 @@ export default function SignUp() {
         <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
           <div className="lg:w-2/6 md:w-1/2 y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
             <Logodiv>
-              <ColorLogo />
+              <Link href="/"><ColorLogo width="300" height="54" viewBox="0 0 300 60" /></Link>
             </Logodiv>
             <form>
               <InputDiv>
                 <label
                   htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-sm text-gray-600" 
                 >
                   이메일
                 </label>
                 <InputBox
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   value={signUpData.email}
                   placeholder="이메일을 입력해 주세요."
                   onChange={handleInput}
+                  required
                 ></InputBox>
               </InputDiv>
               <InputDiv>
@@ -96,16 +98,15 @@ export default function SignUp() {
                 >
                   비밀번호
                 </label>
-                <input
+                <InputBox
                   type="password"
                   id="password"
                   name="password"
                   value={signUpData.password}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-[60px]"
                   placeholder="비밀번호를 입력해 주세요."
                   autoComplete="new-password"
                   onChange={handleInput}
-                />
+                ></InputBox>
               </InputDiv>
               <InputDiv>
                 <label
@@ -114,15 +115,14 @@ export default function SignUp() {
                 >
                   비밀번호 확인
                 </label>
-                <input
+                <InputBox
                   type="password"
                   id="confirmPassword"
                   name="confirmPassword"
                   value={signUpData.confirmPassword}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-[60px]"
                   placeholder="비밀번호를 한번 더 입력해 주세요."
                   onChange={handleInput}
-                />
+                ></InputBox>
               </InputDiv>
               <InputDiv>
                 <label
@@ -131,19 +131,18 @@ export default function SignUp() {
                 >
                   이름
                 </label>
-                <input
+                <InputBox
                   type="text"
                   id="name"
                   name="name"
                   value={signUpData.name}
-                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out h-[60px]"
                   placeholder="이름을 입력해 주세요."
                   onChange={handleInput}
-                />
+                ></InputBox>
               </InputDiv>
               <button
                 type="button"
-                className="text-white bg-[#0074FF] border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg h-[60px]"
+                className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] w-full mt-8"
                 onClick={clickSignUpBtn}
               >
                 가입하기

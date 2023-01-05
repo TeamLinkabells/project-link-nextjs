@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import ColorLogo from "../public/logo_color.svg";
 
 import tw from "tailwind-styled-components"
@@ -8,6 +9,32 @@ w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-i
 `
 
 export default function Login() {
+
+  const [LoginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  let handleInput = (e) => {
+    // console.log(e.target.value),
+    setLoginData({
+      ...LoginData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  let clickLoginBtn = async () => {
+    if (LoginData.email === "") {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
+
+    if (LoginData.password === "") {
+      alert("비밀번호를 입력해주세요.");
+      return;
+    }
+  }
+
   return (
     <>
       <section className="text-gray-600 body-font h-screen">
@@ -18,11 +45,11 @@ export default function Login() {
             </div>
             <div className="relative mb-5">
               {/* <label for="full-name" className="leading-7 text-sm text-gray-600">Email</label> */}
-              <InputBox type="text" id="full-name" name="full-name" placeholder="Email"></InputBox>
+              <InputBox type="email" id="email" name="email" placeholder="Email" onChange={handleInput}></InputBox>
             </div>
             <div className="relative mb-5">
               {/* <label for="email" className="leading-7 text-sm text-gray-600" placeholder="Email">Password</label> */}
-              <InputBox type="email" id="email" name="email" placeholder="Password"></InputBox>
+              <InputBox type="password" id="password" name="password" placeholder="Password" onChange={handleInput}></InputBox>
             </div>
             <div>
               <label className="flex items-center flex-row mb-8">
@@ -30,7 +57,7 @@ export default function Login() {
                 <span className="ml-2">자동 로그인</span>
               </label>
             </div>
-            <button className="text-white bg-[#0074FF] border-0 py-2 px-6 focus:outline-none rounded text-lg h-[60px] tracking-tight">로그인</button>
+            <button className="text-white bg-[#0074FF] border-0 py-2 px-6 focus:outline-none rounded text-lg h-[60px] tracking-tight" onClick={clickLoginBtn}>로그인</button>
             <button className="text-white bg-[#BBBBBB] border-0 py-2 px-6 focus:outline-none rounded text-lg mt-5 h-[60px] tracking-tight">카카오톡 간편 로그인</button>
             <p className="text-gray-500 mt-10 tracking-tight m-auto">아직 회원이 아니신가요? <Link href="/signUp"><span className="text-[#0074FF] underline underline-offset-3">이메일로 회원가입</span></Link></p>
           </div>
