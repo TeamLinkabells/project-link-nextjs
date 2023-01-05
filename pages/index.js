@@ -1,21 +1,23 @@
 import Link from "next/link";
 import Logo from "../public/logo.svg";
+import Header from "../components/Header";
 
 export default function Home() {
   return (
     <>
-      <section className="text-gray-600 body-font bg-[#0074FF]">
-        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col bg-[#0074FF]">
-          <div className="mb-8">
+      <Header />
+      <section>
+        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col bg-[#0074FF] h-screen">
+          <div className="mb-10">
             <Logo />
           </div>
 
-          <p className="mb-8 leading-relaxed text-white">
+          <p className="mb-12 leading-relaxed text-white text-2xl">
             나만의 링크 저장소, 링커벨
           </p>
           <div className="flex justify-center">
-            <button className="inline-flex text-[#0074FF] bg-white border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              <Link href="/login">로그인 페이지로 이동하기</Link>
+            <button className="flex text-[#0074FF] bg-white border-0 focus:outline-none rounded text-lg h-[80px] w-[360px] items-center justify-center drop-shadow-2xl">
+              <Link href="/login" className="py-2 px-6 flex items-center justify-center w-full h-full text-xl font-medium">로그인 페이지로 이동하기</Link>
             </button>
           </div>
         </div>

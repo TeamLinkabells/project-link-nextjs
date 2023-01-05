@@ -1,38 +1,20 @@
+import Link from "next/link";
 import { useState } from "react";
 import ColorLogo from "../public/logo_color.svg";
 
 import tw from "tailwind-styled-components";
 
 const Logodiv = tw.div`
-   m-auto 
-   mb-[50px]
+m-auto mb-[50px]
 `;
 
 const InputDiv = tw.div`
-   relative 
-   mb-4
-`;
+relative mb-5
+`
 
-const InputSmall = tw.input`
-   w-full 
-   bg-white 
-   rounded 
-   border 
-   border-gray-300 
-   focus:border-indigo-500 
-   focus:ring-2 
-   focus:ring-indigo-200 
-   text-base 
-   outline-none 
-   text-gray-700 
-   py-1 
-   px-3 
-   leading-8 
-   transition-colors 
-   duration-200 
-   ease-in-out 
-   h-[60px]
-`;
+const InputBox = tw.input`
+w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
+`
 
 export default function SignUp() {
   const [signUpData, setSignUpData] = useState({
@@ -98,14 +80,14 @@ export default function SignUp() {
                 >
                   이메일
                 </label>
-                <InputSmall
+                <InputBox
                   type="text"
                   id="email"
                   name="email"
                   value={signUpData.email}
                   placeholder="이메일을 입력해 주세요."
                   onChange={handleInput}
-                ></InputSmall>
+                ></InputBox>
               </InputDiv>
               <InputDiv>
                 <label
