@@ -71,12 +71,6 @@ export default function Login() {
             </div>
             <form onSubmit={onSubmit}>
               <div className="relative mb-5">
-                <label
-                  htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
-                  Email
-                </label>
                 <InputBox
                   type="email"
                   id="email"
@@ -85,13 +79,6 @@ export default function Login() {
                 ></InputBox>
               </div>
               <div className="relative mb-5">
-                <label
-                  htmlFor="password"
-                  className="leading-7 text-sm text-gray-600"
-                  placeholder="Password"
-                >
-                  Password
-                </label>
                 <InputBox
                   type="password"
                   id="password"
@@ -101,7 +88,7 @@ export default function Login() {
               </div>
               <button
                 type="submit"
-                className="text-white bg-[#0074FF] border-0 py-2 px-6 focus:outline-none rounded text-lg h-[60px] tracking-tight"
+                className="w-full text-white bg-[#0074FF] border-0 py-2 px-6 focus:outline-none rounded text-lg h-[60px] tracking-tight mt-2"
               >
                 로그인
               </button>

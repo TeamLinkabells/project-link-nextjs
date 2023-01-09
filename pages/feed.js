@@ -33,17 +33,18 @@ export default function Feed() {
 
   const { data, status, session } = useSession();
 
-  console.log("데이터", data);
-  console.log("세션", session);
+  // console.log("데이터", data);
+  // console.log("세션", session);
 
   return (
     <>
-      <FeedLayout />
-      <section className="text-gray-600 m-auto px-20 py-5">
-        <div className="container">
-          <div className="flex flex-wrap gap-5"></div>
-        </div>
-      </section>
+      <FeedLayout>
+        <section className="text-gray-600 m-auto px-20 py-5">
+          <div className="container">
+            <div className="flex flex-wrap gap-5" />
+          </div>
+        </section>
+      </FeedLayout>
       {/* ---------------------원래 피드----------------------- */}
       {/* <FormInput
         urlData={urlData}
