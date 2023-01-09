@@ -1,7 +1,9 @@
-import Link from "next/link";
+import Link from "next/link"
 import { useState } from "react";
-import ColorLogo from "../public/logo_color.svg";
+import axios from "axios";
+import { useRouter } from "next/router";
 
+import ColorLogo from "../public/logo_color.svg";
 import tw from "tailwind-styled-components";
 
 const Logodiv = tw.div`
@@ -10,19 +12,23 @@ m-auto mb-[50px]
 
 const InputDiv = tw.div`
 relative mb-5
-`
+`;
 
 const InputBox = tw.input`
 w-full bg-white rounded border focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-4 leading-8 transition-colors duration-200 ease-in-out h-[60px] bg-[#F1F1F5]
-`
+`;
 
 export default function SignUp() {
+  const router = useRouter();
+
   const [signUpData, setSignUpData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
     name: "",
   });
+
+  const [errorMsg, setErrorMsg] = useState("");
 
   let handleInput = (e) => {
     // console.log(e.target.value),
@@ -35,7 +41,6 @@ export default function SignUp() {
   // 회원가입 버튼을 클릭 했을때, 유효성 검사 후,
   // axios를 사용해서 서버에 요청!
   let clickSignUpBtn = async () => {
-
     if (signUpData.email === "") {
       alert("이메일을 입력해주세요.");
       return;
@@ -62,7 +67,10 @@ export default function SignUp() {
     }
 
     //실질적인 axios요청,
-    //  return await axios.post(server.url + "/user/signUp", signUpData);
+    return await axios.post(
+      "http://localhost:3000/api/auth/signup",
+      signUpData
+    );
   };
 
   return (
@@ -71,13 +79,15 @@ export default function SignUp() {
         <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
           <div className="lg:w-2/6 md:w-1/2 y-100 rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
             <Logodiv>
-              <Link href="/"><ColorLogo width="300" height="54" viewBox="0 0 300 60" /></Link>
+              <Link href="/">
+                <ColorLogo width="300" height="54" viewBox="0 0 300 60" />
+              </Link>
             </Logodiv>
             <form>
               <InputDiv>
                 <label
                   htmlFor="email"
-                  className="leading-7 text-sm text-gray-600" 
+                  className="leading-7 text-sm text-gray-600"
                 >
                   이메일
                 </label>
@@ -140,10 +150,35 @@ export default function SignUp() {
                   onChange={handleInput}
                 ></InputBox>
               </InputDiv>
+              <div className="mb-3">
+                <p className="text-danger">{errorMsg}</p>
+              </div>
               <button
                 type="button"
                 className="text-white bg-[#0074FF] border-0 py-2 px-8 rounded text-lg h-[60px] w-full mt-8"
-                onClick={clickSignUpBtn}
+                onClick={() => {
+                  clickSignUpBtn()
+                    .then((res) => {
+                      console.log("리스폰스", res.data);
+                      if (res.data.status) {
+                        alert(res.data.message);
+                        router.push("/login");
+                      } else {
+                        //에러 메시지를 보여주고
+                        setErrorMsg(res.data.message);
+                        //input의 모든 데이터를 없앰
+                        setSignUpData({
+                          email: "",
+                          password: "",
+                          confirmPassword: "",
+                          name: "",
+                        });
+                      }
+                    })
+                    .catch((e) => {
+                      console.log(e);
+                    });
+                }}
               >
                 가입하기
               </button>
