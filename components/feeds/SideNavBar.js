@@ -36,7 +36,7 @@ function SideNavBar(props) {
             width="140"
             height="26"
             viewBox="0 0 300 60"
-            className="m-auto mt-10"
+            className="mx-auto mt-10"
           />
           <button
             className="absolute top-1/2 -right-5 translate-y-[-50%]"

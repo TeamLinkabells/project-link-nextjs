@@ -1,5 +1,23 @@
 import React from "react";
+
 import Close from "../public/close.svg";
+import tw from "tailwind-styled-components";
+
+const ModalBg = tw.div`
+fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity
+`
+
+const ModalInput = tw.input`
+text-gray-500 bg-[#F1F1F5] h-[60px] w-full text-base px-4 py-2 rounded-md focus:outline-none sm:rounded-r-none border border-solid border-[#e5e7eb]
+`
+
+const ModalSubmitBtn = tw.button`
+w-full justify-center rounded-md border border-transparent bg-[#0074FF] px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none h-[60px] flex items-center mt-4 sm:m-0 sm:w-[100px] sm:rounded-l-none
+`
+
+const ModalCloseBtn = tw.button`
+mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 sm:mt-0 sm:ml-3 w-auto sm:text-sm absolute top-[25px] right-[30px]
+`
 
 function Modal(props) {
   let { urlModal, setUrlModal, urlModalOpenFunc } = props; //url 입력을 관리하는 변수
@@ -13,7 +31,7 @@ function Modal(props) {
         role="dialog"
         aria-modal="true"
       >
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <ModalBg className=""></ModalBg>
 
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
@@ -28,28 +46,26 @@ function Modal(props) {
                       링크 입력
                     </h3>
                     <div className="mt-5 sm:flex">
-                      <input
+                      <ModalInput
                         type="text"
-                        className="text-gray-500 bg-[#F1F1F5] h-[60px] w-full text-base px-4 py-2 rounded-md focus:outline-none sm:rounded-r-none border border-solid border-[#e5e7eb]"
+                        className=""
                         placeholder="링크를 입력해 주세요."
                       />
-                      <button
+                      <ModalSubmitBtn
                         type="button"
-                        className="w-full justify-center rounded-md border border-transparent bg-[#0074FF] px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none h-[60px] flex items-center mt-4 sm:m-0 sm:w-[100px] sm:rounded-l-none"
                       >
                         제출
-                      </button>
+                      </ModalSubmitBtn>
                     </div>
                   </div>
                 </div>
               </div>
-              <button
+              <ModalCloseBtn
                 type="button"
-                className="mt-3 inline-flex justify-center rounded-md bg-white text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 w-auto sm:text-sm absolute top-[25px] right-[30px]"
                 onClick={urlModalOpenFunc}
               >
                 <Close />
-              </button>
+              </ModalCloseBtn>
             </div>
           </div>
         </div>
