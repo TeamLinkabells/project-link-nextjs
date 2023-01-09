@@ -10,14 +10,13 @@ let FeedItem = ({ urlData }) => {
   });
 
   let getData = () => {
-    return  axios.get(
+    return axios.get(
       `https://api.linkpreview.net/?key=2e31fedc1f9e62e652e94bc6756c5606&q=${urlData}`,
       {}
     );
   };
 
   let func = () => {
-
     getData().then((res) => {
       if (res.status === 200) {
         setLinkInfo({
@@ -40,8 +39,8 @@ let FeedItem = ({ urlData }) => {
       </div>
       <div>
         {useEffect(() => {
-          func(linkInfo)
-        },[])}
+          func(linkInfo);
+        }, [])}
         <img src={linkInfo.image}></img>
         <h3>{linkInfo.title}</h3>
         <p>링크 정보 : {linkInfo.description}</p>
