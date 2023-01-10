@@ -13,7 +13,7 @@ h-10 flex items-center text-[#666666] hover:bg-[#E1EEFF]
 `;
 
 function SideNavBar(props) {
-  let { urlModal, setUrlModal, urlModalOpenFunc } = props;
+  let { urlModalOpenFunc, urlData, setUrlData } = props;
   // console.log("내브바", props);
 
   const [toggleMenu, setTogleMenu] = useState(true);
@@ -44,6 +44,7 @@ function SideNavBar(props) {
           >
             <SidebarBtn />
           </button>
+          {/* ---------------------------사이드바------------------------ */}
           <div className="pt-6 mb-auto">
             <div className="mx-6">
               <button

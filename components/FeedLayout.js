@@ -1,41 +1,23 @@
 import { useState } from "react";
 import SideNavBar from "./feeds/SideNavBar";
-import Modal from "./Modal";
 
-let FeedLayout = ({ children }) => {
-  const [urlModal, setUrlModal] = useState(false);
 
-  const urlModalOpenFunc = () => {
-    console.log("urlModal 값", urlModal);
-    setUrlModal(!urlModal);
-  };
-
+let FeedLayout = ({
+  children,
+  urlInputModal,
+  setInputUrlModal,
+  urlModalOpenFunc,
+}) => {
   return (
     <>
-      {urlModal ? (
-        <div className="flex">
-          {" "}
-          <SideNavBar
-            urlModal={urlModal}
-            setUrlModal={setUrlModal}
-            urlModalOpenFunc={urlModalOpenFunc}
-          />
-          <Modal
-            urlModal={urlModal}
-            setUrlModal={setUrlModal}
-            urlModalOpenFunc={urlModalOpenFunc}
-          />
-        </div>
-      ) : (
-        <div className="flex">
-          <SideNavBar
-            urlModal={urlModal}
-            setUrlModal={setUrlModal}
-            urlModalOpenFunc={urlModalOpenFunc}
-          />
-          {children}
-        </div>
-      )}
+      <div className="flex">
+        <SideNavBar
+          urlInputModal={urlInputModal}
+          setInputUrlModal={setInputUrlModal}
+          urlModalOpenFunc={urlModalOpenFunc}
+        />
+        {children}
+      </div>
     </>
   );
 };
