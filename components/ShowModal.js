@@ -84,23 +84,34 @@ function ShowModal(props) {
                     >
                       링크 정보
                     </h3>
-                    <div className="mt-5 sm:flex">
-                      <img src={linkInfo.image}></img>
+                    <div className="mt-5 sm:flex h-[300px] rounded-md overflow-hidden border border-[#ddd]">
+                      <img src={linkInfo.image} className="w-full object-cover"></img>
                     </div>
-                    <div className="mt-5 sm:flex">
+                    <div className="mt-5 sm:flex h-[60px] bg-[#f1f1f5] rounded-md flex items-center px-4 text-[#666]">
                       <h3>{linkInfo.title}</h3>
                     </div>
-                    <div className="mt-5 sm:flex">
+                    <div className="mt-5 sm:flex h-[120px] bg-[#f1f1f5] rounded-md flex items-start p-4 text-[#666]">
                       <p>{linkInfo.description}</p>
                     </div>
-                    <ModalSubmitBtn
-                      type="button"
-                      onClick={() => {
-                        // func(linkInfo);
-                      }}
-                    >
-                      등록
-                    </ModalSubmitBtn>
+                    <div className="flex justify-end gap-5 mt-5">
+                      <ModalSubmitBtn
+                        type="button"
+                        className="bg-white border-[#ddd] text-[#999] rounded-l-md"
+                        onClick={() => {
+                          // func(linkInfo);
+                        }}
+                      >
+                        이전
+                      </ModalSubmitBtn>
+                      <ModalSubmitBtn
+                        type="button"
+                        onClick={() => {
+                          // func(linkInfo);
+                        }}
+                      >
+                        등록
+                      </ModalSubmitBtn>
+                    </div>
                   </div>
                 </div>
               </div>
