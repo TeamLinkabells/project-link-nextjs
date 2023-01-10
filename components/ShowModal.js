@@ -15,7 +15,7 @@ text-gray-500 bg-[#F1F1F5] h-[60px] w-full text-base px-4 py-2 rounded-md focus:
 `;
 
 const ModalSubmitBtn = tw.button`
-w-full justify-center rounded-md border border-transparent bg-[#0074FF] px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none h-[60px] flex items-center mt-4 sm:m-0 sm:w-[100px] sm:rounded-l-none
+w-full justify-center rounded-md border border-transparent bg-[#0074FF] px-4 py-2 text-base font-medium text-white shadow-sm focus:outline-none h-[60px] flex items-center mt-4 sm:m-0 sm:w-[100px]
 `;
 
 const ModalCloseBtn = tw.button`
@@ -96,7 +96,7 @@ function ShowModal(props) {
                     <div className="flex justify-end gap-5 mt-5">
                       <ModalSubmitBtn
                         type="button"
-                        className="bg-white border-[#ddd] text-[#999] rounded-l-md"
+                        className="bg-white border-[#ddd] text-[#999] rounded-l-unset"
                         onClick={() => {
                           // func(linkInfo);
                         }}
